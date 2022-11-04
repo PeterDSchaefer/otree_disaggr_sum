@@ -12,17 +12,17 @@
     {% endif %}
     {% if player.treatment == 2 %}
         <p>In each period, you are randomly matched with an owner to manage a division of the owner’s company.
-            You learn the market size, market share, and sales price that your division will realize, and thus, how much revenue it will earn.</p>
+           You learn how much revenue each of the three products of your division will earn, and thus, how much revenue your division will earn.</p>
         <p> You report to the owner how much revenue your division will earn.
-            The owner will never learn the actual market size, market share, sales price, and revenue.
-            However, the owner knows the probability distribution of the market size, market share, sales price, and the revenue, which will be shown on the next page.</p>
+            The owner will never learn the actual revenue of the division or any of the three products.
+            However, the owner knows the probability distribution of the revenue of the division and the three products, which will be shown on the next page.</p>
     {% endif %}
     {% if player.treatment == 3 %}
         <p>In each period, you are randomly matched with an owner to manage a division of the owner’s company.
-           You learn the market size, market share, and sales price that your division will realize, and thus, how much revenue it will earn.</p>
-        <p>You report to the owner the market size, market share, sales price, and how much revenue your division will earn.
-            The owner will never learn the actual market size, market share, sales price, and revenue.
-            However, the owner knows the probability distribution of the market size, market share, sales price, and the revenue, which will be shown on the next page.</p>
+           You learn how much revenue each of the three products of your division will earn, and thus, how much revenue your division will earn.</p>
+        <p>You report to the owner how much revenue your division and each of the three products will earn.
+            The owner will never learn the actual revenue of the division or any of the three products.
+            However, the owner knows the probability distribution of the revenue of the division and the three products, which will be shown on the next page.</p>
     {% endif %}
         <p>You receive a fixed salary of 175 ECU. If you report less than your actual revenue, you pocket in addition
             the difference at the expense of the owner:</p>
@@ -44,16 +44,16 @@ compensation, and the owner will learn her/his own but not your compensation.</p
                 However, you know the probability distribution of the revenue, which will be shown on the next page.</p>
         {% endif %}
         {% if player.treatment == 2 %}
-                The manager learns the market size, market share, and sales price that her/his division will realize and, thus, how much revenue it will earn.</p>
+                The manager learns how much revenue each of the three products of her/his division will earn, and thus, how much revenue her/his division will earn.</p>
                 <p>The manager reports to you how much revenue her/his division will earn.
-                You will never learn the actual market size, market share, sales price, and revenue.
-                However, you know the probability distribution of the revenue, which will be shown on the next page.</p>
+                You will never learn the actual revenue of the division or any of the three products.
+                However, you know the probability distribution of the revenue of the division and the three products, which will be shown on the next page.</p>
         {% endif %}
         {% if player.treatment == 3 %}
-                The manager learns the market size, market share, and sales price that her/his division will realize and, thus, how much revenue it will earn.</p>
-                <p>The manager reports to you the market size, market share, sales price, and how much revenue her/his division will earn.
-                You will never learn the actual market size, market share, sales price, and revenue. However, you know the probability distribution of the market size,
-                market share, sales price, and revenue, which will be shown on the next page.</p>
+                The manager learns how much revenue each of the three products of her/his division will earn, and thus, how much revenue her/his division will earn.</p>
+                <p>The manager reports to you how much revenue her/his division and each of the three products will earn.
+                You will never learn the actual revenue of the division or any of the three products.
+                However, you know the probability distribution of the revenue of the division and the three products, which will be shown on the next page.</p>
         {% endif %}
 
         <p>You receive a fixed salary of 100 ECU plus the revenue that the manager reports. If the manager reports less

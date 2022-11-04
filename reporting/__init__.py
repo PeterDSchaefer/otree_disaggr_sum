@@ -193,7 +193,7 @@ class Guess(Page):
                     player.participant.lottery_won = 0
 
             if player.round_number == C.NUM_ROUNDS:
-                player.participant.payoff_ecu =  C.FIXED_PAY_OWNER + int(player.participant.revenue_report) + player.participant.lottery_won * 50
+                player.participant.payoff_ecu = C.FIXED_PAY_OWNER + int(player.participant.revenue_report) + player.participant.lottery_won * 50
                 player.participant.payoff_euro = player.participant.payoff_ecu / C.CONVERSION_RATE
 
 class ShowReport(Page):
@@ -227,8 +227,5 @@ class WaitForAll(WaitPage):
 
     title_text = "Please wait"
     body_text = "Please hold on. Once all participants are ready, you will be rematched with another participant and continue to the next period."
-
-
-
 
 page_sequence = [Welcome, Setting_overview, Setting_payoffs, Setting, Questions, Setting_distribution, Report, WaitForP1, ShowReport, Guess, Finish, WaitForAll]

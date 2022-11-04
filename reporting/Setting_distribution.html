@@ -3,35 +3,21 @@
 {{ endblock }}
 {{ block content }}
 
+        <p>The division sells three products. The revenue of the division is the sum total of the revenues of the three products:</p>
+        <p>Revenue of the division = Revenue of Product #1 + Revenue of Product #2 + Revenue of Product #3.</p>
+        <p>The revenue of each of the three products can take any value from 50 to 150 ECU (50, 51, …, 150 ECU). Each value is equally likely.
+            The revenues of the three products are independent from each other and can thus differ.</p>
+        <p>As a result, the revenue of the division can take any value from 150 to 450 ECU. The probability distribution of the revenue looks as shown below.</p>
+
     {% if player.id_in_group == 1 %}
-
-        <div>Revenue depends on the market size, market share, and sales price:</div><br>
-            <p>Revenue = Market size × Market share × Sales price.</p>
-        <div>Both you and the owner know that these three parameters lie within certain ranges, over which they are
-        uniformly distributed. That is, each value within the range is equally likely to occur:</div><br>
-            <p>1. Market size (units): 25, 26, ..., 35;</p>
-            <p>2. Market share (%): 20, 21, ..., 40;</p>
-            <p>3. Sales price (ECU per unit): 20, 21, ..., 30.</p>
-        <div>Taken together, both you and the owner know that the revenue lies between 100 and 420 ECU and that
-            its probability distribution looks as shown below.</div><br>
-
+        <p>This information is known to both you and the owner. However, you also learn the actual revenue, the owner does not.</p>
     {% else %}
-
-        <div>Revenue depends on the market size, market share, and sales price:</div><br>
-            <p>Revenue = Market size × Market share × Sales price.</p>
-        <div>Both you and the manager know that these three parameters lie within certain ranges, over which they
-            are uniformly distributed. That is, each value within the range is equally likely to occur:</div><br>
-            <p>1. Market size (units): 25, 26, ..., 35;</p>
-            <p>2. Market share (%): 20, 21, ..., 40;</p>
-            <p>3. Sales price (ECU per unit): 20, 21, ..., 30.</p>
-        <div>Taken together, both you and the manager know that the revenue lies between 100 and 420 ECU and
-            that its probability distribution looks as shown below.</div><br>
-
+        <p>This information is known to both you and the manager. However, the manager also learns the actual revenue, you do not.</p>
     {% endif %}
 
 
 <div style="text-align: center;">
-    <img src="{% static 'revenue_distribution.png' %}" width="50%" style="float:align" border="1"/>
+    <img src="{% static 'rev_distr.png' %}" width="50%" style="float:align" border="1"/>
 </div>
 <br>
 

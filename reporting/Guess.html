@@ -7,7 +7,7 @@
 
 <p>Recall that the manager has reported a revenue of {{ group.report }} ECU.
     In addition to the manager’s report, you know
-    <a class="image-link" href={% static 'revenue_distribution2.png' %}> the probability distribution of the revenue.</a></p>
+    <a class="image-link" href={% static 'rev_distr.png' %}> the probability distribution of the revenue.</a></p>
 
 <table>
     <tr>
@@ -28,9 +28,11 @@
                         &nbsp ECU.</p>
 
                         {% if player.treatment == 3%}
-                        <p> Market size [units] = <input id="report_value2" type="text" size="1" value="{{ player.group.market_size }}" disabled><br>
-                            Market share [%] = <input id="report_value2" type="text" size="1" value="{{ player.group.market_share }}" disabled><br>
-                            Price [ECU] = <input id="report_value2" type="text" size="1" value="{{ player.group.price }}" disabled> <br>
+                        <p>
+                                <br>Break-down into products:<br>
+                                <br>Product #1: <input id="report_value2" type="text" size="1" value="{{ player.group.market_size }}" disabled><br>
+                                <br>Product #2: <input id="report_value2" type="text" size="1" value="{{ player.group.market_share }}" disabled><br>
+                                <br>Product #3: <input id="report_value2" type="text" size="1" value="{{ player.group.price }}" disabled> <br>
                         </p>
                         {% endif %}
 
@@ -54,9 +56,9 @@ At the end of the experiment, a random number # will be drawn from 0, 1, …, 8.
             <td colspan="4"> Adjust the slider to indicate your estimate of the actual revenue in this period.<br>&nbsp</td>
         </tr>
         <tr>
-            <td width="10%" style="text-align:right"> 100 &nbsp </td>
-            <td width="70%"> <input type="range" name="guess" min="100" max="420" value="{{ group.report }}" step="1" id="slider_guess" class="form-range" oninput="change_slider_guess()"/>  </td>
-            <td width="10%" style="text-align:left"> &nbsp 420 </td>
+            <td width="10%" style="text-align:right"> 150 &nbsp </td>
+            <td width="70%"> <input type="range" name="guess" min="150" max="450" value="{{ group.report }}" step="1" id="slider_guess" class="form-range" oninput="change_slider_guess()"/>  </td>
+            <td width="10%" style="text-align:left"> &nbsp 450 </td>
             <td width="10%" style="text-align:center"> <b><span id="guess_value">{{ group.report }}</span></b> </td>
         </tr>
     </table>

@@ -25,9 +25,11 @@
                         <input id="report_value2" type="text" size="1" value="{{ player.group.report }}" disabled>
                         &nbsp ECU.
                         {% if player.treatment == 3%}
-                        <p> Market size [units] = <input id="report_value2" type="text" size="1" value="{{ player.group.market_size }}" disabled><br>
-                            Market share [%] = <input id="report_value2" type="text" size="1" value="{{ player.group.market_share }}" disabled><br>
-                            Price [ECU] = <input id="report_value2" type="text" size="1" value="{{ player.group.price }}" disabled> <br>
+                        <p>
+                                <br>Break-down into products:<br>
+                                <br>Product #1: <input id="report_value2" type="text" size="1" value="{{ player.group.market_size }}" disabled><br>
+                                <br>Product #2: <input id="report_value2" type="text" size="1" value="{{ player.group.market_share }}" disabled><br>
+                                <br>Product #3: <input id="report_value2" type="text" size="1" value="{{ player.group.price }}" disabled> <br>
                         </p>
                         {% endif %}
 
