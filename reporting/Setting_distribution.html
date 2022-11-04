@@ -1,0 +1,44 @@
+{{ block title }}
+    Probability distribution of the revenue
+{{ endblock }}
+{{ block content }}
+
+    {% if player.id_in_group == 1 %}
+
+        <div>Revenue depends on the market size, market share, and sales price:</div><br>
+            <p>Revenue = Market size × Market share × Sales price.</p>
+        <div>Both you and the owner know that these three parameters lie within certain ranges, over which they are
+        uniformly distributed. That is, each value within the range is equally likely to occur:</div><br>
+            <p>1. Market size (units): 25, 26, ..., 35;</p>
+            <p>2. Market share (%): 20, 21, ..., 40;</p>
+            <p>3. Sales price (ECU per unit): 20, 21, ..., 30.</p>
+        <div>Taken together, both you and the owner know that the revenue lies between 100 and 420 ECU and that
+            its probability distribution looks as shown below.</div><br>
+
+    {% else %}
+
+        <div>Revenue depends on the market size, market share, and sales price:</div><br>
+            <p>Revenue = Market size × Market share × Sales price.</p>
+        <div>Both you and the manager know that these three parameters lie within certain ranges, over which they
+            are uniformly distributed. That is, each value within the range is equally likely to occur:</div><br>
+            <p>1. Market size (units): 25, 26, ..., 35;</p>
+            <p>2. Market share (%): 20, 21, ..., 40;</p>
+            <p>3. Sales price (ECU per unit): 20, 21, ..., 30.</p>
+        <div>Taken together, both you and the manager know that the revenue lies between 100 and 420 ECU and
+            that its probability distribution looks as shown below.</div><br>
+
+    {% endif %}
+
+
+<div style="text-align: center;">
+    <img src="{% static 'revenue_distribution.png' %}" width="50%" style="float:align" border="1"/>
+</div>
+<br>
+
+    {{ next_button }}
+
+{{ endblock }}
+
+
+
+

@@ -1,0 +1,77 @@
+{{ block title }}
+    Questions
+{{ endblock }}
+{{ block content }}
+
+<style>
+th, td {
+  border-spacing: 0px;
+  border-bottom: 1px solid black;
+  padding:5px;
+}
+
+.tdright{
+    text-align: right;
+}
+
+.tdq{
+    border-bottom: 0px;
+}
+
+.tdtop ={
+    border-top: 1px solid black;
+}
+</style>
+
+<p><b>Please indicate how much you agree with each of the following statements.<br>
+(1 = Strongly disagree, 7 = Strongly agree)</b></p>
+    <table width="100%">
+        <tr style="border-top: 1px solid black;"><td class=td_top width=60% style="border-top: 1px solid black;">{% formfield 'cognitive_effort' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'motive_honesty' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'motive_credibility' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'motive_egoism' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'motive_altruism' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'deliberation_honesty' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'deliberation_credibility' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'deliberation_egoism' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'deliberation_altruism' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'deliberation_general' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'reactance_planning' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'reactance_reporting' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'contingency' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'normative_expect' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'empirical_expect' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'machiav1' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'machiav2' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'machiav3' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{{ formfield 'perceived_trust' }}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{{ formfield 'uncertainty_sub' }}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+    </table>
+
+
+
+
+    <!--- <table>
+        <tr>
+            <td colspan="7">It would be unethical for a division manager to increase the own payoff by significantly under-reporting the actual revenue in the report.</td>
+        </tr>
+        <tr>
+            <td width="10%"><input type="radio" id="html" name="ethical_behavior" value="1"><label for="html">&nbsp 1 </label><br></td>
+            <td width="10%"><input type="radio" id="html" name="ethical_behavior" value="2"><label for="html">&nbsp 2</label><br></td>
+            <td width="10%"><input type="radio" id="html" name="ethical_behavior" value="3"><label for="html">&nbsp 3</label><br></td>
+            <td width="10%"><input type="radio" id="html" name="ethical_behavior" value="4"><label for="html">&nbsp 4</label><br></td>
+            <td width="10%"><input type="radio" id="html" name="ethical_behavior" value="5"><label for="html">&nbsp 5</label><br></td>
+            <td width="10%"><input type="radio" id="html" name="ethical_behavior" value="6"><label for="html">&nbsp 6</label><br></td>
+            <td width="40%">&nbsp<br></td>
+        </tr>
+    </table>-->
+    <br>
+    {{ next_button }}
+
+{{ endblock }}
+
+{% block scripts %}
+    <script>
+
+    </script>
+{%  endblock %}

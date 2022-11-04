@@ -1,0 +1,21 @@
+{{ block title }}
+    Period finished
+{{ endblock }}
+
+{{ block content }}
+
+    <p> You are finished with Period {{ player.round_number }}. </p>
+
+    {% if player.round_number == C.NUM_ROUNDS %}
+        <p> Please continue to answer some questions.</p>
+    {% else %}
+        {% if player.id_in_group == 1 %}
+            <p> Once all participants are ready, you will be randomly rematched with another owner for the next period. </p>
+        {% else %}
+            <p> Once all participants are ready, you will be randomly rematched with another manager for the next period. </p>
+        {% endif %}
+    {% endif %}
+
+    {{ next_button }}
+
+{{ endblock }}

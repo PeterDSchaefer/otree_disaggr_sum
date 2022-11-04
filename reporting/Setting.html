@@ -1,0 +1,70 @@
+{{ block title }}
+    Setting
+{{ endblock }}
+{{ block content }}
+
+{% if player.id_in_group == 1 %}
+        <p>You have been assigned as a manager for the rest of this experiment.</p>
+    {% if player.treatment == 1 %}
+        <p>In each period, you are randomly matched with an owner to manage a division of the owner’s company. You learn how much revenue your division will earn.</p>
+        <p>You report to the owner how much revenue your division will earn. The owner will never learn the actual revenue.
+            However, the owner knows the probability distribution of the revenue, which will be shown on the next page.</p>
+    {% endif %}
+    {% if player.treatment == 2 %}
+        <p>In each period, you are randomly matched with an owner to manage a division of the owner’s company.
+            You learn the market size, market share, and sales price that your division will realize, and thus, how much revenue it will earn.</p>
+        <p> You report to the owner how much revenue your division will earn.
+            The owner will never learn the actual market size, market share, sales price, and revenue.
+            However, the owner knows the probability distribution of the market size, market share, sales price, and the revenue, which will be shown on the next page.</p>
+    {% endif %}
+    {% if player.treatment == 3 %}
+        <p>In each period, you are randomly matched with an owner to manage a division of the owner’s company.
+           You learn the market size, market share, and sales price that your division will realize, and thus, how much revenue it will earn.</p>
+        <p>You report to the owner the market size, market share, sales price, and how much revenue your division will earn.
+            The owner will never learn the actual market size, market share, sales price, and revenue.
+            However, the owner knows the probability distribution of the market size, market share, sales price, and the revenue, which will be shown on the next page.</p>
+    {% endif %}
+        <p>You receive a fixed salary of 175 ECU. If you report less than your actual revenue, you pocket in addition
+            the difference at the expense of the owner:</p>
+        <p>Your payoff = 175 ECU + Actual revenue − Reported revenue;</p>
+        <p>Owner’s payoff = Owner’s fixed payoff + Reported revenue.</p>
+        <p>Remember that 25 ECU = €1 and that your compensation will be based on one of the eight periods,
+which will be randomly selected at the end of the experiment. You will learn your own but not the owner’s
+compensation, and the owner will learn her/his own but not your compensation.</p>
+
+    {% else %}
+
+        <p>You have been assigned as an owner for the rest of this experiment.</p>
+        <p>In each period, you are randomly matched with a manager, who manages a division of your company for you.
+
+        {% if player.treatment == 1 %}
+                The manager learns how much revenue her/his division will earn.</p>
+            <p> The manager reports to you how much revenue her/his division will earn.
+                You will never learn the actual revenue.
+                However, you know the probability distribution of the revenue, which will be shown on the next page.</p>
+        {% endif %}
+        {% if player.treatment == 2 %}
+                The manager learns the market size, market share, and sales price that her/his division will realize and, thus, how much revenue it will earn.</p>
+                <p>The manager reports to you how much revenue her/his division will earn.
+                You will never learn the actual market size, market share, sales price, and revenue.
+                However, you know the probability distribution of the revenue, which will be shown on the next page.</p>
+        {% endif %}
+        {% if player.treatment == 3 %}
+                The manager learns the market size, market share, and sales price that her/his division will realize and, thus, how much revenue it will earn.</p>
+                <p>The manager reports to you the market size, market share, sales price, and how much revenue her/his division will earn.
+                You will never learn the actual market size, market share, sales price, and revenue. However, you know the probability distribution of the market size,
+                market share, sales price, and revenue, which will be shown on the next page.</p>
+        {% endif %}
+
+        <p>You receive a fixed salary of 100 ECU plus the revenue that the manager reports. If the manager reports less
+            than her/his actual revenue, the manager pockets the difference at your expense:</p>
+        <p>Your payoff = 100 ECU + Reported revenue;</p>
+        <p>Manager’s payoff = Manager’s fixed payoff + Actual revenue − Reported revenue.</p>
+        <p>Remember that 25 ECU = €1 and that your compensation will be based on one of the eight periods,
+            which will be randomly determined at the end of the experiment. You will learn your own but not the
+            manager’s compensation, and the manager will learn her/his but not your compensation.</p>
+    {% endif %}
+
+    {{ next_button }}
+
+{{ endblock }}

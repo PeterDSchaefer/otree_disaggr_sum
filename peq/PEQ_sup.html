@@ -1,0 +1,50 @@
+{{ block title }}
+    Questions
+{{ endblock }}
+{{ block content }}
+
+<style>
+table {
+  border: 0px;
+  padding: 0px;
+}
+
+th, td {
+  border-spacing: 0px;
+  border-bottom: 1px solid black;
+  padding:5px;
+}
+
+.tdright{
+    text-align: right;
+}
+
+.tdq{
+    border-bottom: 0px;
+}
+
+.tdtop ={
+    border-top: 1px solid black;
+}
+
+</style>
+
+<p><b>Please indicate how much you agree with each of the following statements.<br>
+(1 = Strongly disagree, 7 = Strongly agree)</b></p>
+    <table>
+        <tr><td class=td_top width=60% style="border-top: 1px solid black;">{% formfield 'uncertainty_sup' %}</td><td class="tdright" style="border-top: 1px solid black;">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'machiav1' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'machiav2' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+        <tr><td class=td_top width=60%>{% formfield 'machiav3' %}</td><td class="tdright">(1 = Strongy disagree, 7 = Strongly agree)</td></tr>
+    </table>
+    <br>
+
+    {{ next_button }}
+
+{{ endblock }}
+
+{% block scripts %}
+    <script>
+
+    </script>
+{%  endblock %}

@@ -1,0 +1,22 @@
+{{ block title }}
+    Thank you for participating!
+{{ endblock }}
+
+{{ block content }}
+
+    <p>
+		You have finished the experiment. To collect your cash compensation, you absolutely need the following payment code.
+	</p>
+
+	<p style = "text-align: center">
+		{{ participant.vars.payment_code }}
+	</p>
+
+	<p>
+		Please write this code down or save it on your computer. You will not be able to retrieve the code once the experiment website is closed. Without your code, we cannot identify you as a participant. No code, no cash.
+	</p>
+
+    <button id="submit" value="True"> I have written down the code</button>
+
+
+{{ endblock }}

@@ -1,0 +1,124 @@
+{{ block title }}
+    Comprehension questions
+{{ endblock }}
+{{ block content }}
+
+        <p>Please indicate whether each of the following statements is true or false.</p>
+
+{% if player.id_in_group == 1 %}
+
+    <table>
+        <tr>
+            <td width="50%">Both your payoff and the owner's payoff depend on the revenue that you report.</td>
+            <td>
+                <input type="radio" id="f" name="q1" value="False"> False
+                <input type="radio" id="t" name="q1" value="True"> True
+            </td>
+        </tr>
+
+        <tr><td>The owner will know the actual revenue.</td>
+            <td>
+                <input type="radio" id="f" name="q2" value="False"> False
+                <input type="radio" id="t" name="q2" value="True"> True
+            </td>
+        </tr>
+
+        <tr><td>Both you and the owner will know the revenue's probability distribution.</td>
+            <td>
+                <input type="radio" id="f" name="q3" value="False"> False
+                <input type="radio" id="t" name="q3" value="True"> True
+            </td>
+        </tr>
+
+        <tr><td>Your compensation will be based on one of the eight periods, which will be randomly determined at the end of the experiment.</td>            <td>
+                <input type="radio" id="f" name="q4" value="False"> False
+                <input type="radio" id="t" name="q4" value="True"> True
+            </td></tr>
+    </table>
+
+    {% else %}
+
+   <table>
+        <tr>
+            <td width="50%">Both your payoff and the manager's payoff depend on the revenue that she/he reports.</td>
+            <td>
+                <input type="radio" id="f" name="q1" value="False"> False
+                <input type="radio" id="t" name="q1" value="True"> True
+            </td>
+        </tr>
+
+        <tr><td>You will learn the actual revenue over the course of the experiment.</td>
+            <td>
+                <input type="radio" id="f" name="q2" value="False"> False
+                <input type="radio" id="t" name="q2" value="True"> True
+            </td>
+        </tr>
+
+        <tr><td>Both you and the manager will know the revenue's probability distribution.</td>
+            <td>
+                <input type="radio" id="f" name="q3" value="False"> False
+                <input type="radio" id="t" name="q3" value="True"> True
+            </td>
+        </tr>
+
+        <tr><td>Your compensation will be based on one of the eight periods, which will be randomly determined at the end of the experiment.</td>            <td>
+                <input type="radio" id="f" name="q4" value="False"> False
+                <input type="radio" id="t" name="q4" value="True"> True
+            </td>
+        </tr>
+    </table>
+
+    {% endif %}
+<p>
+    <div id="msg_not_answered" style="color: red"> Please answer all questions before you proceed. </div>
+    <div id="msg_wrongly_answered" style="color: red"> You have not answered all questions correctly. Please check your answers. </div>
+</p>
+
+    <button type="button" onclick="submit_btn()">Next</button>
+    <button id="submit" value="True" hidden>Next</button>
+
+
+
+<script>
+    window.onload = initialize();
+
+    function initialize(){
+        document.getElementById('msg_not_answered').style.visibility = 'hidden'
+        document.getElementById('msg_wrongly_answered').style.visibility = 'hidden'
+    }
+
+function submit_btn() {
+    all_answered = 1
+    q1 = document.getElementsByName('q1');
+    q2 = document.getElementsByName('q2');
+    q3 = document.getElementsByName('q3');
+    q4 = document.getElementsByName('q4');
+    link = document.getElementById('submit');
+
+    document.getElementById('msg_not_answered').style.visibility = 'hidden'
+    document.getElementById('msg_wrongly_answered').style.visibility = 'hidden'
+
+
+    if ((!((q1[0].checked) || (q1[1].checked))) || (!((q2[0].checked) || (q2[1].checked))) || (!((q3[0].checked) || (q3[1].checked))) || (!((q4[0].checked) || (q4[1].checked)))) {
+        alert("Please answer all questions before you proceed.");
+        document.getElementById('msg_not_answered').style.visibility = 'visible';
+        all_answered = 0;
+    }
+
+    if (all_answered == 1) {
+        if ((!(q1[1].checked)) || (!(q2[0].checked)) || (!(q3[1].checked)) || (!q4[1].checked)) {
+            alert("You have not answered all questions correctly. Please check your answers.")
+            document.getElementById('msg_wrongly_answered').style.visibility = 'visible';
+        } else {
+            link.click();
+        }
+    }
+}
+
+</script>
+
+{{ endblock }}
+
+
+
+

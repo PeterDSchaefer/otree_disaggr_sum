@@ -1,0 +1,28 @@
+{{ block title }}
+    Questions
+{{ endblock }}
+{{ block content }}
+
+    <p>Please answer the following questions. Note that the data will not be used to identify you.</p>
+
+    <table>
+        <tr><td colspan="3">{{ formfield 'age' }}</td></tr>
+        <tr><td colspan="3">{{ formfield 'gender' }}</td></tr>
+        <tr><td colspan="3">{{ formfield 'discipline' }}</td></tr>
+        <tr><td colspan="3">{{ formfield 'degree' }}</td></tr>
+        <tr><td colspan="2">{{ formfield 'mathskills' }}</td><td class="tdright">(1 = very good, 6 = unsatisfactory)</td></tr>
+    </table>
+    <br>
+
+    {{ next_button }}
+
+{{ endblock }}
+
+{% block scripts %}
+<script>
+
+    function change_slider(){
+        document.getElementById('mathskills_value').innerHTML=document.getElementById('mathskills_slider').value;
+    }
+</script>
+{%  endblock %}

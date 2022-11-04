@@ -1,0 +1,28 @@
+{{ block title }}
+    Your Payment
+{{ endblock }}
+
+{{ block content }}
+
+    {% if player.id_in_group == 1 %}
+        <p>You have arrived at the end of the experiment. From all eight periods, Period No. {{ participant.payment_roundno }} has been randomly drawn to determine your compensation.</p>
+        <p>The actual revenue in Period No. {{ participant.payment_roundno }} was {{ participant.revenue_actual }} ECU. </p>
+        <p>Your reported revenue in Period No. {{ participant.payment_roundno }} was {{ participant.revenue_report }} ECU. </p>
+        <p>As a result, your payoff for Period No. {{ participant.payment_roundno }}  was: Fixed Payoff + Actual Revenue - Reported Revenue = {{ C.FIXED_PAY_MANAGER }} ECU +
+            {{ participant.revenue_actual }} ECU - {{ participant.revenue_report }} ECU = {{ participant.payoff_ecu }} ECU.</p>
+        <p>Converting this amount to Euro results in a compensation of €{{ participant.payoff_euro }}.</p>
+    {% else %}
+        <p>You have arrived at the end of the experiment. From all eight periods, Period No.{{ participant.payment_roundno }} has been randomly drawn.</p>
+        <p>The reported revenue in Period No. {{ participant.payment_roundno }} was {{ participant.revenue_report }} ECU. As a result, your payoff for Period No. {{ participant.payment_roundno }} was: Fixed Payoff + Reported Revenue =
+            {{ C.FIXED_PAY_OWNER }} ECU + {{ participant.revenue_report }} ECU = {{ pay_owner_from_round }} ECU. </p>
+        {% if participant.lottery_won == 1 %}
+            <p>From the lottery, you get an extra payoff of 50 ECU.</p>
+        {% else %}
+            <p>You did not win the lottery.</p>
+        {% endif %}
+        <p> Hence, your total compensation is {{ participant.payoff_ecu }} ECU. Converting this amount to Euro results in a compensation of €{{ participant.payoff_euro }}.</p>
+    {% endif %}
+
+    {{ next_button }}
+
+{{ endblock }}
