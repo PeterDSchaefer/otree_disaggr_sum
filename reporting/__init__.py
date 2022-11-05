@@ -9,7 +9,7 @@ This app is a budgeting task.
 class C(BaseConstants):
     NAME_IN_URL = 'reporting'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 2
+    NUM_ROUNDS = 8
     FIXED_PAY_MANAGER = 150
     FIXED_PAY_OWNER = 100
     CONVERSION_RATE = 25
