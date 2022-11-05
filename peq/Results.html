@@ -7,19 +7,19 @@
     {% if participant.role == 1 %}
         <p>Period {{ participant.payment_roundno }} has been randomly drawn to determine your compensation.</p>
         <p>Actual revenue in Period {{ participant.payment_roundno }}: {{ participant.revenue_actual }} ECU. </p>
-        <p>Your reported revenue in Period No. {{ participant.payment_roundno }}: {{ participant.revenue_report }} ECU. </p>
+        <p>Your reported revenue in Period {{ participant.payment_roundno }}: {{ participant.revenue_report }} ECU. </p>
         {% if participant.payoff_ecu == C.MIN_COMP %}
             <p>Hence, in this period, you reported a revenue that was substantially greater than the actual revenue. Your payoff from that round would be
-                {{ C.FIXED_PAY_MANAGER  }} ECU + {{ participant.revenue_actual }} ECU - {{ participant.revenue_report }} ECU = {{ pay_manager_from_round }} ECU (Fixed payoff + Actual revenue - Reported revenue). Nevertheless, you get a compensation of {{ C.MIN_COMP }} ECU.</p>
+                {{ C.FIXED_PAY_MANAGER  }} ECU + {{ participant.revenue_actual }} ECU - {{ participant.revenue_report }} ECU = {{ pay_manager_from_round }} ECU (Fixed payoff + Actual revenue – Reported revenue). Nevertheless, you get a compensation of {{ C.MIN_COMP }} ECU.</p>
         {% else %}
             <p>Your payoff in Period {{ participant.payment_roundno }}: {{ C.FIXED_PAY_MANAGER }} ECU +
-            {{ participant.revenue_actual }} ECU - {{ participant.revenue_report }} ECU = {{ participant.payoff_ecu }} ECU (Fixed payoff + Actual revenue - Reported revenue).</p>
+            {{ participant.revenue_actual }} ECU – {{ participant.revenue_report }} ECU = {{ participant.payoff_ecu }} ECU (Fixed payoff + Actual revenue – Reported revenue).</p>
         {% endif %}
         <p>Your compensation: €{{ participant.payoff_euro }}.</p>
     {% else %}
         <p>Period {{ participant.payment_roundno }} has been randomly drawn to determine your compensation.</p>
         <p>Revenue reported by the manager in Period {{ participant.payment_roundno }}: {{ participant.revenue_report }} ECU.</p>
-        <p>Your payoff in period {{ participant.payment_roundno }}:
+        <p>Your payoff in Period {{ participant.payment_roundno }}:
             {{ C.FIXED_PAY_OWNER }} ECU + {{ participant.revenue_report }} ECU = {{ pay_owner_from_round }} ECU (Fixed payoff + Reported revenue). </p>
         {% if participant.lottery_won == 1 %}
             <p>From the lottery, you get an extra payoff of 50 ECU.</p>

@@ -24,9 +24,9 @@
             The owner will never learn the actual revenue of the division or any of the three products.
             However, the owner knows the probability distribution of the revenue of the division and the three products, which will be shown on the next page.</p>
     {% endif %}
-        <p>You receive a fixed salary of 175 ECU. If you report less than your actual revenue, you pocket in addition
+        <p>You receive a fixed salary of {{ C.FIXED_PAY_MANAGER }} ECU. If you report less than your actual revenue, you pocket in addition
             the difference at the expense of the owner:</p>
-        <p>Your payoff = 175 ECU + Actual revenue − Reported revenue;</p>
+        <p>Your payoff = {{ C.FIXED_PAY_MANAGER }} ECU + Actual revenue − Reported revenue;</p>
         <p>Owner’s payoff = Owner’s fixed payoff + Reported revenue.</p>
         <p>Remember that 25 ECU = €1 and that your compensation will be based on one of the eight periods,
 which will be randomly selected at the end of the experiment. You will learn your own but not the owner’s
@@ -58,7 +58,7 @@ compensation, and the owner will learn her/his own but not your compensation.</p
 
         <p>You receive a fixed salary of 100 ECU plus the revenue that the manager reports. If the manager reports less
             than her/his actual revenue, the manager pockets the difference at your expense:</p>
-        <p>Your payoff = 100 ECU + Reported revenue;</p>
+        <p>Your payoff = {{ C.FIXED_PAY_OWNER }} ECU + Reported revenue;</p>
         <p>Manager’s payoff = Manager’s fixed payoff + Actual revenue − Reported revenue.</p>
         <p>Remember that 25 ECU = €1 and that your compensation will be based on one of the eight periods,
             which will be randomly determined at the end of the experiment. You will learn your own but not the
