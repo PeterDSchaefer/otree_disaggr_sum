@@ -3,12 +3,12 @@ from os import environ
 ROOMS = [
     dict(
         name='Round_1',
-        display_name='Virtual Lab, November 07th'
+        display_name='Virtual Lab, November 07th (without specific links)'
     ),
     dict(
         name='Room_with_list',
         display_name='Virtual Lab, November 07th',
-        participant_label_file='room_participants',
+        participant_label_file='room_participants (with specific links)',
         use_secure_urls=True
     )
 ]
