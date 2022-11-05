@@ -100,15 +100,15 @@
             <td colspan="3">
                 <table width="100%" style="text-align:center; border-style:dotted" border="1">
                     <tr>
-                        <td>&nbsp</td><td><b><p>Actual</p></b></td><td colspan="3" style="text-align:center"><b><p>Your input</p></b></td><td><b><p>Planned</p></b></td>
+                        <td>&nbsp</td><td><b><p>Actual revenue [ECU]</p></b></td><td colspan="3" style="text-align:center"><b><p>Your input</p></b></td><td><b><p>Planned revenue [ECU]</p></b></td>
                     </tr>
                     <tr>
-                        <td width="15%"><b>Revenue [ECU]</b></td>
-                        <td width="10%">{{ revenue }}</td>
+                        <td width="15%"><b>Division</b></td>
+                        <td width="15%">{{ revenue }}</td>
                         <td width="7%">150</td>
                         <td width="40%"><input id="report_slider" type="range" min="150" max="450" value="{{ revenue }}" step="1" class="form-range" oninput="change_slider()" onload="initialize()"></td>
                         <td width="8%">450</td>
-                        <td width="20%"><b><span id="slider_value">{{ revenue }}</span></b></td>
+                        <td width="15%"><b><span id="slider_value">{{ revenue }}</span></b></td>
                     </tr>
                 </table>
             </td>
@@ -134,7 +134,7 @@
             <td colspan="3">
                 <table width="100%" style="text-align:center; border-style:dotted" border="1" cellpadding="2">
                     <tr>
-                        <td>&nbsp</td><td><b><p>Actual revenue</p></b></td><td colspan="3" style="text-align:center"><b><p>Your input</p></b></td><td><b><p>Planned revenue</p></b></td>
+                        <td>&nbsp</td><td><b><p>Actual revenue [ECU]</p></b></td><td colspan="3" style="text-align:center"><b><p>Your input</p></b></td><td><b><p>Planned revenue [ECU]</p></b></td>
                     </tr>
                     <tr><td>Product #1</td><td>{{ market_size }}</td><td>50</td><td><input id="plan_slider_size" type="range" min="50" max="150" value="{{ market_size }}" step="1" class="form-range" oninput="change_slider_para_size()"></td><td>150</td><td><span id="slider_value_size">{{ market_size }}</span></td></tr>
                     <tr><td>Product #2</td><td>{{ market_share }}</td><td>50</td><td><input id="plan_slider_share" type="range" min="50" max="150" value="{{ market_share }}" step="1" class="form-range" oninput="change_slider_para_share()"></td><td>150</td><td><span id="slider_value_share">{{ market_share }}</span></td>
@@ -142,11 +142,11 @@
                     <tr><td colspan="6"><br></td></tr>
                     <tr style="font-size:13pt">
                         <td width="15%"><b>Division</b></td>
-                        <td width="10%">{{ revenue }}</td>
-                        <td width="7%"></td>
-                        <td width="40%"><input id="report_slider" type="range" min="150" max="450" value="{{ revenue }}" step="1" class="form-range" hidden></td>
-                        <td width="8%"></td>
-                        <td width="20%"><b><span id="field_revenue_planned">{{ revenue }}</span></b></td>
+                        <td width="25%">{{ revenue }}</td>
+                        <td width="5%"></td>
+                        <td width="15%"><input id="report_slider" type="range" min="150" max="450" value="{{ revenue }}" step="1" class="form-range" hidden></td>
+                        <td width="5%"></td>
+                        <td width="25%"><b><span id="field_revenue_planned">{{ revenue }}</span></b></td>
                     </tr>
                 </table>
             </td>
@@ -163,11 +163,13 @@
         <tr>
             <td style="text-align:left" colspan="3"><p class="p_large">Report</p>
                 <p>Create and preview your report. Push the “Prepare report” button to plug in your planned
-                    revenue
-                    {% if player.treatment == 3 %}
-                        s
+                    {% if player.treatment <= 2 %}
+                    revenue.
                     {% endif %}
-                    . Change your plan and create a new report as often as you like before submitting. The owner receives your report as shown, and no other information. </p>
+                    {% if player.treatment == 3 %}
+                    revenues.
+                    {% endif %}
+                    Change your plan and create a new report as often as you like before submitting. The owner receives your report as shown, and no other information. </p>
                 <button type="button" id="report_fill" onclick="myFunction()" width="2500pt" align="center">Prepare report</input><br>
             </td>
         </tr>

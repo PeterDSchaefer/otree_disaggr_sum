@@ -10,7 +10,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'reporting'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 2
-    FIXED_PAY_MANAGER = 175
+    FIXED_PAY_MANAGER = 150
     FIXED_PAY_OWNER = 100
     CONVERSION_RATE = 25
     MIN_COMP = 125
