@@ -8,7 +8,7 @@ ROOMS = [
     dict(
         name='Room_with_list',
         display_name='Virtual Lab, November 07th',
-        participant_label_file='room_participants (with specific links)',
+        participant_label_file='room_participants',
         use_secure_urls=True
     )
 ]
