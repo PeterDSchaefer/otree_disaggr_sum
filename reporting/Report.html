@@ -106,7 +106,7 @@
                         <td width="15%"><b>Division</b></td>
                         <td width="15%">{{ revenue }}</td>
                         <td width="7%">150</td>
-                        <td width="40%"><input id="report_slider" type="range" min="150" max="450" value="{{ revenue }}" step="1" class="form-range" oninput="change_slider()" onload="initialize()"></td>
+                        <td width="40%"><input id="report_slider" type="range" min="150" max="450" value="{{ revenue }}" step="1" class="form-range" oninput="input_slider()" onload="initialize()"></td>
                         <td width="8%">450</td>
                         <td width="15%"><b><span id="slider_value">{{ revenue }}</span></b></td>
                     </tr>
@@ -136,9 +136,9 @@
                     <tr>
                         <td>&nbsp</td><td><b><p>Actual revenue [ECU]</p></b></td><td colspan="3" style="text-align:center"><b><p>Your input</p></b></td><td><b><p>Planned revenue [ECU]</p></b></td>
                     </tr>
-                    <tr><td>Product #1</td><td>{{ market_size }}</td><td>50</td><td><input id="plan_slider_size" type="range" min="50" max="150" value="{{ market_size }}" step="1" class="form-range" oninput="change_slider_para_size()"></td><td>150</td><td><span id="slider_value_size">{{ market_size }}</span></td></tr>
-                    <tr><td>Product #2</td><td>{{ market_share }}</td><td>50</td><td><input id="plan_slider_share" type="range" min="50" max="150" value="{{ market_share }}" step="1" class="form-range" oninput="change_slider_para_share()"></td><td>150</td><td><span id="slider_value_share">{{ market_share }}</span></td>
-                    <tr><td>Product #3</td><td>{{ price }}</td><td>50</td><td><input id="plan_slider_price" type="range" min="50" max="150" value="{{ price }}" step="1" class="form-range" oninput="change_slider_para_price()"></td><td>150</td><td><span id="slider_value_price">{{ price }}</span></td></tr>
+                    <tr><td>Product #1</td><td>{{ market_size }}</td><td>50</td><td><input id="plan_slider_size" type="range" min="50" max="150" value="{{ market_size }}" step="1" class="form-range" oninput="input_slider_para_size()"></td><td>150</td><td><span id="slider_value_size">{{ market_size }}</span></td></tr>
+                    <tr><td>Product #2</td><td>{{ market_share }}</td><td>50</td><td><input id="plan_slider_share" type="range" min="50" max="150" value="{{ market_share }}" step="1" class="form-range" oninput="input_slider_para_share()"></td><td>150</td><td><span id="slider_value_share">{{ market_share }}</span></td>
+                    <tr><td>Product #3</td><td>{{ price }}</td><td>50</td><td><input id="plan_slider_price" type="range" min="50" max="150" value="{{ price }}" step="1" class="form-range" oninput="input_slider_para_price()"></td><td>150</td><td><span id="slider_value_price">{{ price }}</span></td></tr>
                     <tr><td colspan="6"><br></td></tr>
                     <tr style="font-size:13pt">
                         <td width="15%"><b>Division</b></td>
@@ -256,6 +256,11 @@
     var price_last_pos;
     var clicked;
 
+    var up_before;
+    var size_up_before;
+    var share_up_before;
+    var price_up_before;
+
     window.onload = initialize();
 
     function initialize(){
@@ -263,47 +268,86 @@
         size_last_pos = document.getElementById('plan_slider_size').value;
         share_last_pos = document.getElementById('plan_slider_share').value;
         price_last_pos = document.getElementById('plan_slider_price').value;
+        up_before = 0;
         clicked = 0;
     }
 
-    function change_slider(){
+    function input_slider(){
         var moved;
+        var up;
+        var change;
+        change = 0;
         document.getElementById('slider_value').innerHTML=document.getElementById('report_slider').value;
         new_position = parseFloat(document.getElementById("report_slider").value);
         moved = Math.abs(new_position-last_position);
+        if (new_position>last_position){
+            up = 1;
+        } else {
+            up = 0;
+        }
+        if (up_before != up){
+            change = 1;
+        }
         last_position = new_position;
-        liveSend({"moved": moved});
+        up_before = up;
+        liveSend({"moved": moved, "changed_dir": change});
     }
 
-    function change_slider_para_size_a(){
-        alert("!!!")
-    }
-
-    function change_slider_para_size(){
+    function input_slider_para_size(){
+        change = 0;
         document.getElementById('slider_value_size').innerHTML=document.getElementById('plan_slider_size').value;
         update_revenue();
         new_position = parseFloat(document.getElementById("plan_slider_size").value);
         moved = Math.abs(new_position-size_last_pos);
+        if (new_position>size_last_pos){
+            up = 1;
+        } else {
+            up = 0;
+        }
+        if (size_up_before != up){
+            change = 1;
+        }
+        size_up_before = up;
         size_last_pos = new_position;
-        liveSend({"what": "size", "moved": moved});
+        liveSend({"what": "size", "moved": moved, "changed_dir": change});
     }
 
-    function change_slider_para_share(){
+    function input_slider_para_share(){
+        change = 0;
         document.getElementById('slider_value_share').innerHTML=document.getElementById('plan_slider_share').value;
         update_revenue();
         new_position = parseFloat(document.getElementById('plan_slider_share').value);
         moved = Math.abs(new_position-share_last_pos);
+        if (new_position>share_last_pos){
+            up = 1;
+        } else {
+            up = 0;
+        }
+        if (share_up_before != up){
+            change = 1;
+        }
+        size_up_before = up;
         share_last_pos = new_position;
-        liveSend({"what": "share", "moved": moved});
+        liveSend({"what": "share", "moved": moved, "changed_dir": change});
     }
 
-    function change_slider_para_price(){
+    function input_slider_para_price(){
+        change = 0;
         document.getElementById('slider_value_price').innerHTML=document.getElementById('plan_slider_price').value;
         update_revenue();
         new_position = parseFloat(document.getElementById('plan_slider_price').value);
         moved = Math.abs(new_position-price_last_pos);
+        if (new_position>price_last_pos){
+            up = 1;
+        } else {
+            up = 0;
+        }
+        if (price_up_before != up){
+            change = 1;
+        }
+        price_up_before = up;
         price_last_pos = new_position;
-        liveSend({"what": "price", "moved": moved});
+        liveSend({"what": "price", "moved": moved, "changed_dir": change});
     }
 
     function update_revenue(){

@@ -64,11 +64,16 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     treatment = models.IntegerField()
+    payment_round = models.BooleanField()
     move_total = models.IntegerField()
     share_move_total = models.IntegerField()
     size_move_total = models.IntegerField()
     price_move_total = models.IntegerField()
-    payment_round = models.BooleanField()
+    move_dir = models.IntegerField()
+    share_move_dir = models.IntegerField()
+    size_move_dir = models.IntegerField()
+    price_move_dir = models.IntegerField()
+
     #lottery_round = models.BooleanField()
 
 # PAGES
@@ -127,6 +132,11 @@ class Report(Page):
         player.share_move_total = 0
         player.size_move_total = 0
         player.price_move_total = 0
+        player.move_dir = 0
+        player.share_move_dir = 0
+        player.size_move_dir = 0
+        player.price_move_dir = 0
+
 
         #Check whether the current round is the round for payout
 
@@ -146,13 +156,17 @@ class Report(Page):
     def live_method(player: Player, data):
         if player.treatment == 1:
             player.move_total = player.move_total + data["moved"]
+            player.move_dir = player.move_dir + data["changed_dir"]
         if player.treatment >= 2:
             if data["what"] == "share":
                 player.share_move_total = player.share_move_total + data["moved"]
+                player.share_move_dir = player.share_move_dir + data["changed_dir"]
             if data["what"] == "size":
                 player.size_move_total = player.size_move_total + data["moved"]
+                player.size_move_dir = player.size_move_dir + data["changed_dir"]
             if data["what"] == "price":
                 player.price_move_total = player.price_move_total + data["moved"]
+                player.price_move_dir = player.price_move_dir + data["changed_dir"]
 
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
@@ -227,5 +241,8 @@ class WaitForAll(WaitPage):
 
     title_text = "Please wait"
     body_text = "Please hold on. Once all participants are ready, you will be rematched with another participant and continue to the next period."
+
+    def is_displayed(player):
+        return player.round_number < C.NUM_ROUNDS
 
 page_sequence = [Welcome, Setting_overview, Setting_payoffs, Setting, Questions, Setting_distribution, Report, WaitForP1, ShowReport, Guess, Finish, WaitForAll]
